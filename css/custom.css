@@ -1,0 +1,536 @@
+input[type="text"], input[type="password"], .SumoSelect{
+    margin-bottom: 10px;
+}
+
+label{
+    margin-top: 15px;
+}
+
+input[type="submit"]{
+    width: auto;
+}
+
+.navbar input[type="text"], input[type="password"], .SumoSelect{
+    width: 100%;
+}
+
+.corps-page input[type="text"], input[type="password"], .SumoSelect{
+    width: 100%;
+}
+
+.alert{
+    margin-top: 10px;
+}
+
+body, html{
+    background-color: #EDEDED;
+}
+
+.form-group .alert{
+    width: 96%;
+}
+
+.alert{
+    -moz-box-shadow: 5px 5px 7px 2px #656565;
+    -webkit-box-shadow: 5px 5px 7px 2px #656565;
+    -o-box-shadow: 5px 5px 7px 2px #656565;
+    box-shadow: 5px 5px 7px 2px #656565;
+    font-weight: bold;
+    border-radius: 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.corps-page {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 15px;
+    min-height: 400px;
+}
+
+.table-hover tr:hover{
+    background-color: #A80000 !important;
+    color: white;
+}
+
+.result{
+    padding-top: 20px;
+}
+
+.result .SumoSelect{
+    width: auto;
+    display: inline-block;
+    font-size: 14px !important;
+}
+
+.navbar-default{
+    background: #EDEDED url("img/banniere_v3.png") right no-repeat;
+    background-size: cover;
+    border: none;
+    height: 300px;
+    margin: 0 !important;
+}
+
+.navbar{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 0;
+}
+
+.navbar a{
+    color: #5e5e5e !important;
+    font-weight: bold;
+}
+
+.navbar li:hover{
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+input[type="text"], input[type="password"]{
+    margin-top: 10px;
+}
+
+.SumoSelect{
+    margin-top: 10px;
+}
+
+input[type="submit"]{
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.menu{
+    position: absolute;
+    bottom: 0px;
+    background: rgba(237, 237, 237, 0.77);
+    width: 100%;
+}
+
+.connexion-menu:hover{
+    background-color: transparent !important;
+}
+
+.deco{
+    margin-top: 10px;
+    width: auto !important;
+}
+
+.btn-link{
+    cursor: pointer;
+}
+
+.cliquable{
+    cursor: pointer;
+}
+
+th{
+    background-color: rgba(125,125,125,0.8);
+    color: white;
+}
+
+.btn-primary{
+    background-color: #A80000;
+    color: white;
+    font-weight: bold;
+    border: black;
+    height: 30px;
+    border-radius: 0;
+}
+
+.btn-primary:hover{
+    background-color: black;
+}
+
+footer{
+    text-align: left;
+    background-color: #949494;
+    border-top: 5px solid #CCC;
+}
+
+footer input[type=text]{
+    background-color: #F0F0F0;
+    border: none;
+    height: 30px;
+    border: 1px solid grey;
+    padding-left: 5px;
+}
+
+footer form{
+    max-width: 360px;
+    margin: auto;
+    padding-top: 10px;
+    overflow: hidden;
+}
+
+footer input[type=submit]{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    float: right;
+    clear: both;
+}
+
+footer legend{
+    color: white;
+    font-weight:bold;
+
+}
+
+.inscription-page .form-inline{
+    text-align: center;
+}
+
+.pseudo{
+    border: 2px solid #A80000;
+    background-color: transparent;
+    color: #A80000;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    padding-left: 10px;
+    padding-right: 15px;
+}
+
+.table{
+    margin-top:10px;
+    text-align: center;
+}
+
+.table th{
+    text-align: center;
+}
+
+.table .btn-primary{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    height: 25px;
+    border: 1px solid black;
+}
+
+@media(min-width:767px) {
+    .connexion{
+        text-align: center;
+    }
+}
+
+@media(max-width:767px) {
+    .navbar-default {
+        background: #EDEDED url("img/banniere_v3.png") no-repeat;
+        background-size: cover;
+        background-position: 70%;
+    }
+
+    .connexion input[type="submit"]{
+        float: right;
+        clear: both;
+    }
+
+    .inscription-page .form-inline input[type="submit"] {
+        float: right;
+        clear: both;
+    }
+
+    .navbar button{
+        float: left;
+        clear: both;
+        margin-left: 20px;
+    }
+
+    .navbar-collapse{
+        border: none;
+    }
+
+    .navbar li a{
+        background: grey;
+        color: white !important;
+    }
+
+    .navbar li:hover a{
+        color: grey !important;
+    }
+
+    .navbar li:hover{
+        background-color: rgba(255,255,255, 0.95);
+    }
+
+    .menu{
+        top: 40px;
+    }
+}
+
+#bug-form-content{
+    width: 100%;
+    height: 100px;
+    resize: none;
+}
+
+#bug-form-sender{
+    width: 100%;
+}
+
+.glyphicon{
+    vertical-align: middle;
+}
+
+.ligne{
+    background: #e1e1e1;
+}
+
+.past-option{
+    background: rgba(132, 20, 0, 0.19);
+}
+
+.raid-form input[type="text"],.raid-form input[type="number"]{
+    width: 47%;
+}
+
+.content{
+    margin: 0;
+    padding: 15px;
+    max-width: 70%;
+}
+
+.received .content{
+    float: left;
+    display: inline-block;
+    background: rgba(184, 184, 184, 0.18);
+    border-radius: 0px 15px 15px 15px;
+}
+
+.send .content{
+    float: right;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px 0px 15px 15px;
+}
+
+.received {
+    display: inline-block;
+    width: 100%;
+}
+
+.send {
+    display: inline-block;
+    width: 100%;
+}
+
+.current-discussion td{
+    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#content-to-send{
+    width: 100%;
+    resize: none;
+    height: 100px;
+    margin-top: 10px;
+}
+
+#new-discussion{
+    width: 100%;
+}
+
+#send-message{
+    margin-top: 10px;
+}
+
+.discussion-list{
+    list-style-type: none;
+    padding: 0;
+    max-height: 288px;
+    overflow: auto;
+    display: block;
+    border: 1px solid #d1d1d1;
+}
+
+.discussion-list li{
+    padding: 15px;
+    cursor: pointer;
+}
+
+.discussion-list li:hover{
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.discussion-list li:active{
+    background: #e1e1e1;
+}
+
+.discussion-list .selected-item{
+    background: #e1e1e1;
+    cursor: default;
+}
+
+.chat-view{
+    display: block;
+    height: 400px;
+    width: 100%;
+    overflow: auto;
+    scroll: bottom;
+    border: 1px solid #d1d1d1;
+}
+
+.chat-view tr:hover{
+    background: inherit !important;
+    color: inherit !important;
+}
+
+.chat-view tr{
+    display: inline-block;
+    width: 100%;
+}
+
+.bold{
+    font-weight: bold;
+}
+
+.fixed-top{
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    background-color: #ECECEC;
+    height: 50px;
+    width: 100%;
+    left: 0;
+    border-bottom: 1px solid #dedede;
+}
+
+.top-right-fixed{
+    position: fixed;
+    top: 5px;
+    right: 10px;
+    z-index: 11;
+    background-color: #A80000;
+    color: white;
+    border-color: black;
+    margin: 0;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    -moz-box-shadow: 0px 0px 5px 2px white;
+    -webkit-box-shadow: 0px 0px 5px 2px white;
+    -o-box-shadow: 0px 0px 5px 2px white;
+    box-shadow: 0px 0px 5px 2px white;
+}
+
+.top-right-fixed .glyphicon{
+    color: white !important;
+}
+
+.top-right-fixed a{
+    color: black !important;
+}
+
+.close{
+    margin-left: 5px;
+}
+
+.chat-content-option *{
+    vertical-align: middle;
+    padding-left: 5px;
+    padding-bottom: 5px;
+}
+
+.info-message .alert{
+    min-height: 250px;
+}
+
+#desinscrire-form button{
+    padding-top: 0;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+.team-modify{
+    border: none;
+    border-bottom: 1px solid grey;
+    border-radius: 5px;
+    width: auto !important;
+    min-width: 10px !important;
+    text-align: center;
+    background: transparent;
+    margin: 0 !important;
+}
+
+.msg-modif{
+    position: fixed;
+    bottom: -100px;
+    text-align: center;
+    width: 100%;
+    left: 0;
+    z-index: 5;
+}
+
+#inscrits .SumoSelect{
+    margin: 0;
+}
+
+#inscrits .SumoSelect{
+    color: black !important;
+    width: auto;
+}
+
+#inscrits td{
+    vertical-align: middle !important;
+}
+
+.SumoSelect label{
+    margin: 0;
+}
+
+.alert .close{
+    opacity: 1;
+    color: white !important;
+    position: absolute;
+    right: 5px;
+    top: 0;
+    font-size: 15px;
+}
+
+.btn-primary:active, .btn-primary:focus, .btn-primary:focus:active{
+    background-color: grey;
+}
+
+.SumoSelect.disabled:hover{
+    cursor: inherit !important;
+}
+
+.choice {
+    box-shadow: #00dd1c 0 0 5px !important;
+}
+
+.choiceDisplay{
+    box-shadow: #00dd1c 0 0 5px !important;
+}
+
+.SumoSelect.disabled .SelectBox{
+    opacity: 0.8;
+}
+
+.SumoSelect.disabled{
+    background: transparent !important;
+}
+
+.sumo-as-label{
+    display: none;
+}
+
+input{
+    height: 30px;
+}
+
+.server-msg{
+    background-color: #A80000 !important;
+    color: white !important;
+    width: 100%;
+    display: block;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.inlines .SumoSelect{
+    margin-top: 0;
+}
