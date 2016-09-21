@@ -488,8 +488,12 @@ footer legend{
     font-size: 15px;
 }
 
-.btn-primary:active, .btn-primary:focus, .btn-primary:focus:active{
+.btn-primary:active, .btn-primary:focus:active{
     background-color: grey;
+}
+
+.btn-primary:focus{
+    background: #A80000;
 }
 
 .SumoSelect.disabled:hover{

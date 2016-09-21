@@ -74,7 +74,7 @@ $(document).ready(function() {
 
         var msg = $('#content-to-send').val();
 
-        if(!checkCommand())
+        if(!checkCommand(msg))
             sendMessage(msg);
 
         $('.chat-view').append("<tr><td class='send'><p class='content'>"+displayEnter(escapeHtml($("#content-to-send").val()))+"</td></tr>");
@@ -132,23 +132,52 @@ $(document).ready(function() {
 
     selectSameWidth();
 
+    $(".unsubscribe").on('click', removeFromEvent);
 });
 
+function removeFromEvent(){
+    $.post(
+        "ajax/self-remove-event.php",{
+            event: getSelectedDate()
+        },function(result){
+            if(result) {
+                $('.unsubscribe').closest('.ligne').remove();
+            }
+        }
+    );
+}
+
+function getSelectedDate(){
+    var dateText = $('.dropdown-date').find('.opt.selected label').html().trim();
+    return dateText.substring(dateText.indexOf(' '), dateText.length).trim();
+}
 
 function checkCommand(text){
-    if(!text.match("^/"))
-        return false;
+    $.get(
+        "ajax/get-session-power.php",
+        function(data){
+            var power = parseInt(data);
 
-    var commandName = text.substring(1, text.indexOf(' '));
-    
-    switch(commandName){
-        case "sendall": 
-            var message = text.substring(text.indexOf(' '), text.length);
-            sendMessageToAll(message);
-            break;
-    }
-    
-    return true;
+            if(power < 1){
+                $('.chat-view').append('<tr><td class="server-msg">Droits insufisants</td></tr>');
+                return false;
+            }
+
+            if(!text.match("^/"))
+                return false;
+
+            var commandName = text.substring(1, text.indexOf(' '));
+
+            switch(commandName){
+                case "sendall":
+                    var message = text.substring(text.indexOf(' '), text.length);
+                    sendMessageToAll(message);
+                    break;
+            }
+
+            return true;
+        }
+    );
 }
 
 function sendMessageToAll(content){
@@ -167,8 +196,7 @@ function modifyTeamAction(){
     var team = $(this).val();
     var player = $(this).closest('tr').find('.player-name').html();
 
-    var dateText = $('.dropdown-date').find('span').html().trim();
-    var date = dateText.substring(dateText.indexOf(' '), dateText.length);
+    var date = getSelectedDate();
 
     var charStr = $(this).closest('tr').find('.opt.selected label').html();
     var options = $(this).closest('tr').find('select option');
@@ -246,8 +274,8 @@ function notificationIfNewMessage(){
                 }
 
                 if (window.location.href.indexOf("messagerie") > -1)
-                    messageNotif(ligne["ndc"]);
-                else globalMessageNotif(ligne["ndc"]);
+                    messageNotif(ligne["id"], ligne["ndc"]);
+                else globalMessageNotif(ligne["id"], ligne["ndc"]);
             });
         },
 
@@ -255,23 +283,29 @@ function notificationIfNewMessage(){
     );
 }
 
-function globalMessageNotif(pseudo){
-    $(".msg-notif #new-msg-name").html(pseudo);
+function globalMessageNotif(id, pseudo){
+    if(isCurrentUser(id))
+        $(".msg-notif #new-msg-name").html("RAIDi");
+    else $(".msg-notif #new-msg-name").html(pseudo);
     $(".msg-notif").removeClass("hidden");
 }
 
-function messageNotif(pseudo){
+function messageNotif(id, pseudo){
     //Ajouter à la discussion list si non existent
     var exist = false;
 
     $('.discussion-list li').each(function(){
-       if($(this).html() === pseudo) {
+       if($(this).val() === id) {
            exist = true;
            $(this).addClass('bold');
        }
     });
 
-    if(!exist)
+    if(!exist){
+        if(isCurrentUser(id))
+            $(this).prepend('<li class="bold">RAIDi</li>');
+        else $(this).prepend('<li class="bold">' + pseudo + '</li>');
+    }
         $(this).prepend('<li class="bold">' + pseudo + '</li>');
 }
 
@@ -330,15 +364,22 @@ function selectSameWidth(){
     $('#inscrits .SumoSelect').width(higher);
 }
 
-function getAllMessage() {
+function isCurrentUser(idToCompare){
     var id = $("#hdnSession").val();
+
+    if(parseInt(idToCompare) == parseInt(id)){
+        return false
+    }else return true;
+}
+
+function getAllMessage() {
     $.get(
         'ajax/get-all-discussions.php',
         function(data){
             $.each(data, function(i, ligne){
-                //if(parseInt(ligne["id"]) != parseInt(id)){
-                    $('.discussion-list').append('<li>' + ligne["ndc"] + '</li>');
-                //}else $('.discussion-list').append('<li>Message global</li>');
+                if(isCurrentUser(ligne["id"])){
+                    $('.discussion-list').append('<li value="'+ligne["id"]+'">' + ligne["ndc"] + '</li>');
+                }else $('.discussion-list').append('<li value="'+ligne["id"]+'">RAIDi</li>');
             });
 
             $('.discussion-list li').unbind().click(refreshChatOnSelectName);
@@ -356,7 +397,7 @@ function getMessageWith() {
     clearChat();
     $.get(
         'ajax/get-discussion-with.php',
-        { target: $('.discussion-list .selected-item').html() },
+        { target: $('.discussion-list .selected-item').val() },
         function(data){
             fillChat(data);
         },
@@ -384,7 +425,7 @@ function fillChat(data){
 function setMessagesWrote(idMessage){
     $.post(
         'ajax/set-wrote-messages.php', {
-            cible : $.trim($('.discussion-list .selected-item').html()),
+            cible : $('.discussion-list .selected-item').val(),
             idmessage : idMessage
         }
     );
@@ -396,7 +437,7 @@ function setMessagesWrote(idMessage){
 function sendMessage(content){
     $.post(
         'ajax/send-message.php', {
-            cible : $.trim($('.discussion-list .selected-item').html()),
+            cible : $.trim($('.discussion-list .selected-item').val()),
             contenu : content
         },
 

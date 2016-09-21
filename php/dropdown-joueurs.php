@@ -6,7 +6,9 @@
         echo '<select id="joueurs-dropdown">';
 
         foreach ($donnees as $ligne){
-            echo '<option value="'.$ligne['id'].'">'.$ligne['ndc'].'</option>';
+            if($_SESSION['id'] != $ligne['id']) {
+                echo '<option value="' . $ligne['id'] . '">' . $ligne['ndc'] . '</option>';
+            }
         }
 
         echo '</select>';

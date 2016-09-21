@@ -21,20 +21,7 @@
 		<?php include('includes/menu.php'); ?>
 		<div class="container corps-page">
 			<div class="row info-message">
-                <div class="col-sm-4 col-xs-12">
-                    <div class="alert alert-info">
-                        <p id="date-info">
-							<?php if(!empty($donnees)) {
-								echo 'Prochain raid : ' . $jours[$donnees['jour']-1] . ' ' . $donnees['datef'].'
-								.<br/><br/> Rendez-vous 10 minutes avant l\'heure de départ sur Teamspeak (ts.horizonmg.fr).
-								Pensez à vous y faire vérifier durant votre temps libre, si ce n\'est pas déjà fait.';
-							}else{
-								echo 'Aucun raid actuellement programmé';
-							}?>
-						</p>
-                    </div>
-                </div>
-				<div class="col-sm-8 col-xs-12">
+				<div class="col-xs-12">
 					<div class="alert alert-info">
 						Bonjour à tous,<br/><br/>
 

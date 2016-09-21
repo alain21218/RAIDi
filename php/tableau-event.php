@@ -42,9 +42,9 @@
             $success = "Désinscription effectuée";
 
             $query = "SELECT DATE_FORMAT(date, '%d/%m/%Y %H:%i') as datef FROM event WHERE id=".$_POST['event'];
-            $players = $bdd->query($query)->fetch();
+            $event = $bdd->query($query)->fetch();
 
-            $historique = $_SESSION['ndc']." s'est désinscrit de l'événement du ".$players['datef'];
+            $historique = $_SESSION['ndc']." s'est désinscrit de l'événement du ".$event['datef'];
             ajouterHistorique($historique, $bdd);
         }else $error = "Erreur lors de la désinscription";
     }
@@ -155,11 +155,9 @@
                         <td>
                             <?php if(isset($_SESSION['id'])){
                                 if($_SESSION['id'] == $player['id']){?>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="desinscrire-form">
-                                <button name="desinscrire" tabindex="-1" class="btn btn-primary" type="submit" form="desinscrire-form"><span class="glyphicon glyphicon-remove"></span></button>
-                                <input name="event" type="hidden" value=<?php echo $player['event']; ?> />
-                            </form>
-                            <?php }} ?>
+                                    <a class="btn btn-primary unsubscribe"><span class="glyphicon glyphicon-remove"></span></a>
+                                <?php }
+                            } ?>
                         </td>
                     </tr>
                 <?php }
